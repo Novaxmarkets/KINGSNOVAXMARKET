@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaxMarkets Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+    <div class="account-switcher" aria-label="Account switcher">
+        <button class="account-pill" data-account="demo">Demo | $10,000.00</button>
+        <button class="account-pill" data-account="live">Live | $0.00</button>
+    </div>
+
+    <div class="top-actions">
+        <button class="chat-btn" aria-label="Open live chat">💬</button>
+        <div class="profile-wrap">
+            <button class="profile-avatar" id="profileToggle" aria-label="Open profile menu">NT</button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Account Settings</a>
+                <a href="settings.html">Security</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="drawer" id="navDrawer">
+    <div class="drawer-header">
+        <div>
+            <p class="drawer-label">NovaxMarkets</p>
+            <h2>Navigation</h2>
+        </div>
+    </div>
+
+    <nav class="drawer-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Trading Terminal</a>
+        <a href="trade-history.html">Trade History</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="drawerOverlay"></div>
+
+<main class="page-shell">
+    <section class="page-header">
+        <div>
+            <p class="muted-text">Personal details</p>
+            <h1>Profile</h1>
+        </div>
+        <div class="page-actions">
+            <button class="secondary-btn" id="editProfileBtn">Edit Profile</button>
+            <button class="secondary-btn" id="changePasswordBtn">Change Password</button>
+        </div>
+    </section>
+
+    <section class="page-grid">
+        <article class="panel-card profile-card">
+            <div class="profile-avatar-large" id="profileAvatar">NT</div>
+            <div class="profile-summary">
+                <h2 id="profileName">Novax Trader</h2>
+                <p id="profileUsername">@novaxtrader</p>
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <div class="details-grid">
+                <div><span>Full Name</span><strong id="profileFullName">-</strong></div>
+                <div><span>Username</span><strong id="profileUsernameField">-</strong></div>
+                <div><span>Email</span><strong id="profileEmail">-</strong></div>
+                <div><span>Phone Number</span><strong id="profilePhone">-</strong></div>
+                <div><span>Country</span><strong id="profileCountry">-</strong></div>
+                <div><span>Account ID</span><strong id="profileAccountId">-</strong></div>
+                <div><span>Registration Date</span><strong id="profileRegistration">-</strong></div>
+            </div>
+        </article>
+    </section>
+
+    <section class="panel-card form-card" id="profileFormCard" hidden>
+        <h3>Update Profile</h3>
+        <form id="profileForm" class="form-stack">
+            <div class="field-row">
+                <label>Full Name<input type="text" id="formFullName" required></label>
+                <label>Username<input type="text" id="formUsername" required></label>
+            </div>
+            <div class="field-row">
+                <label>Email<input type="email" id="formEmail" required></label>
+                <label>Phone Number<input type="tel" id="formPhone"></label>
+            </div>
+            <div class="field-row">
+                <label>Country<input type="text" id="formCountry"></label>
+                <label>Account ID<input type="text" id="formAccountId" readonly></label>
+            </div>
+            <div class="field-row">
+                <label>Avatar Initials<input type="text" id="formAvatar" maxlength="2"></label>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="secondary-btn">Save Profile</button>
+                <button type="button" class="secondary-btn" id="cancelProfileEdit">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="panel-card form-card" id="passwordFormCard" hidden>
+        <h3>Change Password</h3>
+        <form id="passwordForm" class="form-stack">
+            <label>Current Password<input type="password" id="currentPassword" required></label>
+            <label>New Password<input type="password" id="newPassword" required></label>
+            <label>Confirm Password<input type="password" id="confirmPassword" required></label>
+            <div class="form-actions">
+                <button type="submit" class="secondary-btn">Update Password</button>
+                <button type="button" class="secondary-btn" id="cancelPasswordEdit">Cancel</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaxMarkets Deposit</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+    <div class="account-switcher" aria-label="Account switcher">
+        <button class="account-pill" data-account="demo">Demo | $10,000.00</button>
+        <button class="account-pill" data-account="live">Live | $0.00</button>
+    </div>
+
+    <div class="top-actions">
+        <button class="chat-btn" aria-label="Open live chat">💬</button>
+        <div class="profile-wrap">
+            <button class="profile-avatar" id="profileToggle" aria-label="Open profile menu">NT</button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Account Settings</a>
+                <a href="settings.html">Security</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="drawer" id="navDrawer">
+    <div class="drawer-header">
+        <div>
+            <p class="drawer-label">NovaxMarkets</p>
+            <h2>Navigation</h2>
+        </div>
+    </div>
+
+    <nav class="drawer-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Trading Terminal</a>
+        <a href="trade-history.html">Trade History</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="notifications.html">Notifications</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="drawerOverlay"></div>
+
+<main class="page-shell">
+    <section class="page-header">
+        <div>
+            <p class="muted-text">Wallet funding</p>
+            <h1>Deposit</h1>
+        </div>
+    </section>
+
+    <section class="page-grid">
+        <article class="panel-card">
+            <h3>Deposit Funds</h3>
+            <form id="depositForm" class="form-stack">
+                <label>Deposit Amount<input type="number" id="depositAmount" min="10" step="10" placeholder="100" required></label>
+                <label>Payment Method<select id="depositMethod">
+                    <option value="M-Pesa">M-Pesa</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select></label>
+                <button type="submit" class="secondary-btn">Deposit</button>
+            </form>
+            <div class="message-box" id="depositMessage"></div>
+        </article>
+
+        <article class="panel-card">
+            <div class="panel-title-row">
+                <h3>Deposit History</h3>
+            </div>
+            <ul class="info-list" id="depositHistoryList"></ul>
+        </article>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

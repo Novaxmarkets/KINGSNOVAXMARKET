@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaxMarkets Notifications</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+    <div class="account-switcher" aria-label="Account switcher">
+        <button class="account-pill" data-account="demo">Demo | $10,000.00</button>
+        <button class="account-pill" data-account="live">Live | $0.00</button>
+    </div>
+
+    <div class="top-actions">
+        <button class="chat-btn" aria-label="Open live chat">💬</button>
+        <div class="profile-wrap">
+            <button class="profile-avatar" id="profileToggle" aria-label="Open profile menu">NT</button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Account Settings</a>
+                <a href="#">Security</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="drawer" id="navDrawer">
+    <div class="drawer-header">
+        <div>
+            <p class="drawer-label">NovaxMarkets</p>
+            <h2>Navigation</h2>
+        </div>
+    </div>
+
+    <nav class="drawer-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Trading Terminal</a>
+        <a href="trade-history.html">Trade History</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="notifications.html">Notifications</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="drawerOverlay"></div>
+
+<main class="notifications-page">
+    <section class="page-header">
+        <div>
+            <p class="muted-text">Inbox</p>
+            <h1>Notifications</h1>
+        </div>
+    </section>
+
+    <section class="panel-card">
+        <div class="panel-title-row">
+            <h3>Recent Activity</h3>
+        </div>
+        <div class="notifications-list" id="notificationsListPage"></div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

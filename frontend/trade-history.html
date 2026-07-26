@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaxMarkets Trade History</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+    <div class="account-switcher" aria-label="Account switcher">
+        <button class="account-pill active" data-account="demo">Demo | $10,000.00</button>
+        <button class="account-pill" data-account="live">Live | $0.00</button>
+    </div>
+
+    <div class="top-actions">
+        <button class="chat-btn" aria-label="Open live chat">💬</button>
+        <div class="profile-wrap">
+            <button class="profile-avatar" id="profileToggle" aria-label="Open profile menu">NT</button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Account Settings</a>
+                <a href="settings.html">Security</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="drawer" id="navDrawer">
+    <div class="drawer-header">
+        <div>
+            <p class="drawer-label">NovaxMarkets</p>
+            <h2>Navigation</h2>
+        </div>
+    </div>
+
+    <nav class="drawer-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html#terminalSection">Trading Terminal</a>
+        <a href="trade-history.html">Trade History</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="index.html">Logout</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="drawerOverlay"></div>
+
+<main class="history-page">
+    <section class="history-header">
+        <div>
+            <p class="muted-text">Trade analytics</p>
+            <h1>Trade History</h1>
+        </div>
+        <div class="history-actions">
+            <button class="export-btn" data-export="csv">Export CSV</button>
+            <button class="export-btn" data-export="excel">Export Excel</button>
+            <button class="export-btn" data-export="pdf">Export PDF</button>
+        </div>
+    </section>
+
+    <section class="history-stats" id="historyStats"></section>
+
+    <section class="history-controls">
+        <div class="history-controls-row">
+            <div class="history-filter-group">
+                <button class="filter-chip active" data-range="all">All</button>
+                <button class="filter-chip" data-range="today">Today</button>
+                <button class="filter-chip" data-range="7d">Last 7 Days</button>
+                <button class="filter-chip" data-range="30d">Last 30 Days</button>
+            </div>
+
+            <div class="history-filter-group">
+                <select id="accountFilter" class="history-select">
+                    <option value="all">All Accounts</option>
+                    <option value="demo">Demo Account</option>
+                    <option value="live">Live Account</option>
+                </select>
+                <select id="resultFilter" class="history-select">
+                    <option value="all">All Results</option>
+                    <option value="won">Won</option>
+                    <option value="lost">Lost</option>
+                    <option value="pending">Pending</option>
+                </select>
+                <select id="marketFilter" class="history-select">
+                    <option value="all">All Markets</option>
+                    <option value="Volatility 75 Index">Volatility 75 Index</option>
+                    <option value="Volatility 50 Index">Volatility 50 Index</option>
+                    <option value="Volatility 25 Index">Volatility 25 Index</option>
+                    <option value="Volatility 100 Index">Volatility 100 Index</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="history-controls-row history-controls-row-bottom">
+            <div class="history-filter-group">
+                <button class="filter-chip active" data-filter-type="all" data-filter-value="all">All</button>
+                <button class="filter-chip" data-filter-type="result" data-filter-value="won">Won</button>
+                <button class="filter-chip" data-filter-type="result" data-filter-value="lost">Lost</button>
+                <button class="filter-chip" data-filter-type="account" data-filter-value="demo">Demo</button>
+                <button class="filter-chip" data-filter-type="account" data-filter-value="live">Live</button>
+            </div>
+
+            <div class="history-search-wrap">
+                <input type="search" id="historySearch" placeholder="Search by Trade ID, Market, or Date" class="history-search">
+            </div>
+
+            <div class="history-filter-group">
+                <select id="sortFilter" class="history-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="profit">Highest Profit</option>
+                    <option value="loss">Highest Loss</option>
+                    <option value="stake">Largest Stake</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="history-table-card">
+        <div class="table-wrap">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Trade ID</th>
+                        <th>Date &amp; Time</th>
+                        <th>Market</th>
+                        <th>Trade Type</th>
+                        <th>Stake</th>
+                        <th>Entry Price</th>
+                        <th>Exit Price</th>
+                        <th>Tick Duration</th>
+                        <th>Winning Digit</th>
+                        <th>Result</th>
+                        <th>Profit/Loss</th>
+                        <th>Balance After Trade</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="historyPagination"></div>
+    </section>
+</main>
+
+<div class="history-modal" id="historyModal" aria-hidden="true">
+    <div class="history-modal-card">
+        <button class="history-modal-close" id="closeHistoryModal">×</button>
+        <div id="historyModalContent"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+<script src="trade-history.js"></script>
+</body>
+</html>

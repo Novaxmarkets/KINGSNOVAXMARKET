@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaxMarkets Settings</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+    <div class="account-switcher" aria-label="Account switcher">
+        <button class="account-pill" data-account="demo">Demo | $10,000.00</button>
+        <button class="account-pill" data-account="live">Live | $0.00</button>
+    </div>
+
+    <div class="top-actions">
+        <button class="chat-btn" aria-label="Open live chat">💬</button>
+        <div class="profile-wrap">
+            <button class="profile-avatar" id="profileToggle" aria-label="Open profile menu">NT</button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Account Settings</a>
+                <a href="settings.html">Security</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="drawer" id="navDrawer">
+    <div class="drawer-header">
+        <div>
+            <p class="drawer-label">NovaxMarkets</p>
+            <h2>Navigation</h2>
+        </div>
+    </div>
+
+    <nav class="drawer-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Trading Terminal</a>
+        <a href="trade-history.html">Trade History</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="notifications.html">Notifications</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="drawerOverlay"></div>
+
+<main class="page-shell">
+    <section class="page-header">
+        <div>
+            <p class="muted-text">Preferences & security</p>
+            <h1>Settings</h1>
+        </div>
+    </section>
+
+    <section class="page-grid settings-grid">
+        <article class="panel-card">
+            <h3>General</h3>
+            <div class="form-stack">
+                <label>Language<select id="settingLanguage"><option value="English">English</option><option value="French">French</option><option value="Spanish">Spanish</option></select></label>
+                <label>Time Zone<select id="settingTimezone"><option value="UTC">UTC</option><option value="GMT">GMT</option><option value="EST">EST</option></select></label>
+                <label>Currency<select id="settingCurrency"><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select></label>
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <h3>Appearance</h3>
+            <div class="form-stack">
+                <label>Theme<select id="settingTheme"><option value="dark">Dark</option><option value="light">Light</option></select></label>
+                <label>Accent Color<select id="settingAccent"><option value="#00c2ff">Cyan</option><option value="#21c55d">Green</option><option value="#a855f7">Purple</option><option value="#f59e0b">Gold</option></select></label>
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <h3>Trading</h3>
+            <div class="form-stack">
+                <label>Default Market<select id="settingMarket"><option>Volatility 75 Index</option><option>Volatility 50 Index</option><option>Volatility 25 Index</option></select></label>
+                <label>Default Stake<input type="number" id="settingStake" min="10" step="5"></label>
+                <label>Default Tick Duration<select id="settingTick"><option>1</option><option>3</option><option>5</option><option>10</option></select></label>
+                <label>Default Chart Type<select id="settingChart"><option value="line">Line</option><option value="candle">Candle</option><option value="ohlc">OHLC</option></select></label>
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <h3>Notifications</h3>
+            <div class="checkbox-stack">
+                <label><input type="checkbox" id="notifTrade"> Trade Notifications</label>
+                <label><input type="checkbox" id="notifDeposit"> Deposit Notifications</label>
+                <label><input type="checkbox" id="notifWithdraw"> Withdrawal Notifications</label>
+            </div>
+        </article>
+
+        <article class="panel-card">
+            <h3>Security</h3>
+            <div class="checkbox-stack">
+                <label><input type="checkbox" id="setting2fa"> Two-Factor Authentication</label>
+                <label><input type="checkbox" id="settingSessions"> Active Sessions Monitoring</label>
+            </div>
+            <p class="muted-text">Password changes and security updates apply to your active account only.</p>
+        </article>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

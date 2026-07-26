@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaxMarkets Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+    <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+    <div class="account-switcher" aria-label="Account switcher">
+        <button class="account-pill active" data-account="demo">Demo | $10,000.00</button>
+        <button class="account-pill" data-account="live">Live | $0.00</button>
+    </div>
+
+    <div class="top-actions">
+        <button class="chat-btn live-chat-float" id="openLiveChatBtn" aria-label="Open live chat">💬 Live Chat</button>
+
+        <div class="profile-wrap">
+            <button class="profile-avatar" id="profileToggle" aria-label="Open profile menu">NT</button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Account Settings</a>
+                <a href="#">Security</a>
+                <a href="notifications.html">Notifications</a>
+                <a href="index.html" data-nav="logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside class="drawer" id="navDrawer">
+    <div class="drawer-header">
+        <div>
+            <p class="drawer-label">NovaxMarkets</p>
+            <h2>Navigation</h2>
+        </div>
+    </div>
+
+    <nav class="drawer-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Trading Terminal</a>
+        <a href="trade-history.html">Trade History</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="deposit.html">Deposit</a>
+        <a href="withdraw.html">Withdraw</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="index.html" data-nav="logout">Logout</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="drawerOverlay"></div>
+
+<div class="dashboard">
+    <main class="content">
+        <div class="welcome-bar">
+            <div>
+                <p class="muted-text">Welcome back</p>
+                <h1>Welcome Trader</h1>
+            </div>
+            <div class="account-badge" id="current-account-badge">🟢 Demo Account</div>
+        </div>
+
+        <div class="balance-grid
+        <section class="overview-grid">
+            <article class="overview-card">
+                <div class="overview-header">
+                    <div>
+                        <p class="section-tag">Market Information</p>
+                        <h3 id="dashboardMarketInfo">Volatility 75 Index</h3>
+                    </div>
+                </div>
+                <div class="wallet-stats">
+                    <div class="wallet-stat">
+                        <span>Current Price</span>
+                        <strong id="dashboardMarketPrice">$0.00</strong>
+                    </div>
+                    <div class="wallet-stat">
+                        <span>Status</span>
+                        <strong id="dashboardMarketStatus">LIVE</strong>
+                    </div>
+                    <div class="wallet-stat">
+                        <span>Payout</span>
+                        <strong id="dashboardMarketPayout">95%</strong>
+                    </div>
+                    <div class="wallet-stat">
+                        <span>Return</span>
+                        <strong id="dashboardMarketReturn">$19.50</strong>
+                    </div>
+                </div>
+            </article>
+
+            <article class="overview-card">
+                <div class="overview-header">
+                    <div>
+                        <p class="section-tag">Current Active Trade</p>
+                        <h3>Active Position</h3>
+                    </div>
+                </div>
+                <div class="wallet-stats">
+                    <div class="wallet-stat">
+                        <span>Position</span>
+                        <strong id="currentTradePosition">Awaiting entry</strong>
+                    </div>
+                    <div class="wallet-stat">
+                        <span>Stake</span>
+                        <strong id="currentTradeStake">—</strong>
+                    </div>
+                    <div class="wallet-stat">
+                        <span>Outcome</span>
+                        <strong id="currentTradeOutcome">Awaiting entry</strong>
+                    </div>
+                    <div class="wallet-stat">
+                        <span>Balance</span>
+                        <strong id="currentTradeBalance">$0.00</strong>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+</div>
+<hr class="section-divider">
+<section class="terminal" id="terminalSection">
+    <div class="terminal-top">
+        <div class="market-title">
+            <span class="section-tag">Trading Terminal</span>
+            <h2 id="market-name">Volatility</h2>
+        </div>
+
+        <div class="market-select-wrap">
+            <label for="market-select">Select Market</label>
+            <select id="market-select" class="market-select">
+                <option>Volatility 10 Index</option>
+                <option>Volatility 25 Index</option>
+                <option>Volatility 50 Index</option>
+                <option selected>Volatility 75 Index</option>
+                <option>Volatility 100 Index</option>
+                <option>Volatility 10 (1s)</option>
+                <option>Volatility 25 (1s)</option>
+                <option>Volatility 50 (1s)</option>
+                <option>Volatility 75 (1s)</option>
+                <option>Volatility 100 (1s)</option>
+                <option>Jump 10 Index</option>
+                <option>Jump 25 Index</option>
+                <option>Jump 50 Index</option>
+                <option>Jump 75 Index</option>
+                <option>Jump 100 Index</option>
+                <option>Step Index</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="terminal-stats">
+        <div class="stat-card">
+            <span class="stat-label">Market</span>
+            <strong id="terminalMarketName">Volatilities</strong>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Current live price</span>
+            <strong id="tick-price">16584.482</strong>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Payout</span>
+            <strong id="terminalPayout">95%</strong>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Return</span>
+            <strong id="terminalReturn">$19.50</strong>
+        </div>
+        <div class="stat-card status-card">
+            <span class="stat-label">Live status</span>
+            <strong id="terminalStatus">LIVE</strong>
+        </div>
+    </div>
+
+    <div class="terminal-controls">
+        <div class="account-banner" id="active-account-banner">🟢 Demo Account Active</div>
+        <div class="control-group">
+            <label for="tick-duration">Tick duration</label>
+            <select id="tick-duration">
+                <option>1</option>
+                <option>3</option>
+                <option selected>5</option>
+                <option>10</option>
+            </select>
+        </div>
+
+        <div class="control-group countdown-group">
+            <label>Countdown</label>
+            <div class="countdown-badge" id="countdown">5</div>
+        </div>
+    </div>
+
+    <div class="chart-type-switcher" aria-label="Chart type selector">
+        <button class="chart-btn active" data-chart="line">NOVAX LINE</button>
+        <button class="chart-btn" data-chart="candle">NOVAX CANDLE</button>
+        <button class="chart-btn" data-chart="bar">NOVAX OHLC</button>
+    </div>
+
+    <div class="chart-card">
+        <div id="liveChart" class="chart-surface" aria-label="Live market chart"></div>
+    </div>
+
+    <div class="digits-panel">
+        <div class="digits-head">
+            <span>Last digit</span>
+            <div class="digit-badge"><span id="last-digit">1</span></div>
+        </div>
+
+        <div class="digits">
+            <div class="digit" data-digit="0"><span class="digit-value">0</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="1"><span class="digit-value">1</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="2"><span class="digit-value">2</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="3"><span class="digit-value">3</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="4"><span class="digit-value">4</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="5"><span class="digit-value">5</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="6"><span class="digit-value">6</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="7"><span class="digit-value">7</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="8"><span class="digit-value">8</span><span class="digit-percent">0.0%</span></div>
+            <div class="digit" data-digit="9"><span class="digit-value">9</span><span class="digit-percent">0.0%</span></div>
+        </div>
+    </div>
+
+    <div class="trade-feedback" id="trade-feedback" role="status"></div>
+
+    <div class="trade-actions">
+        <button class="even-btn">🟢 EVEN</button>
+        <button class="odd-btn">🔴 ODD</button>
+    </div>
+</section>
+<div class="live-chat-window" id="liveChatWindow" aria-hidden="true">
+    <header>
+        <strong>Live Chat</strong>
+        <button class="secondary-btn" id="closeLiveChat" aria-label="Close live chat">×</button>
+    </header>
+    <div class="chat-messages">
+        <div class="chat-bubble agent">Welcome! How can I assist with your trading today?</div>
+        <div class="chat-bubble">I’d like help with my current position.</div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="liveChatInput" placeholder="Type a message...">
+        <button id="sendLiveChat" type="button">Send</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
