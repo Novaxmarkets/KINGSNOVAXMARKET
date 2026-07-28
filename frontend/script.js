@@ -9,7 +9,9 @@ const AUTH_STORAGE_KEY = 'novaxAuthSession';
 const USERS_STORAGE_KEY = 'novaxUsers';
 
 function getCurrentPageName() {
-    return (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const path = window.location.pathname.split(/[?#]/)[0].replace(/\/+$/, '');
+    const page = path.split('/').pop();
+    return (page || 'index.html').toLowerCase();
 }
 
 function getAuthSession() {
@@ -36,7 +38,7 @@ function isAuthenticated() {
 
 function applyAuthRouting() {
     const pageName = getCurrentPageName();
-    const publicPages = ['index.html', 'login.html', 'register.html'];
+    const publicPages = ['index.html', 'login.html', 'register.html', 'register'];
 
     if (!isAuthenticated() && !publicPages.includes(pageName)) {
         window.location.replace('login.html');
@@ -1253,10 +1255,6 @@ function getBalanceValue(element) {
     return Number(String(element?.textContent || '$0.00').replace(/[^0-9.-]/g, '') || 0);
 }
 
-function getBalanceValue(element) {
-    return Number(String(element?.textContent || '$0.00').replace(/[^0-9.-]/g, '') || 0);
-}
-
 function persistTradeRecord(record) {
     const activeAccount = getAccountData(record.accountType);
     activeAccount.tradeHistory.unshift(record);
@@ -1647,6 +1645,18 @@ if (marketSelect && marketName) {
         saveSettingsData();
         price = getMarketProfile(nextMarket).basePrice;
         if (priceDisplay) priceDisplay.textContent = price.toFixed(3);
+    });
+}
+
+if (tradeButtons.even) {
+    tradeButtons.even.addEventListener('click', function () {
+        completeTrade('even');
+    });
+}
+
+if (tradeButtons.even) {
+    tradeButtons.even.addEventListener('click', function () {
+        completeTrade('even');
     });
 }
 
