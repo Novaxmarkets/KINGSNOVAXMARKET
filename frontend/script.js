@@ -9,9 +9,7 @@ const AUTH_STORAGE_KEY = 'novaxAuthSession';
 const USERS_STORAGE_KEY = 'novaxUsers';
 
 function getCurrentPageName() {
-    const path = window.location.pathname.split(/[?#]/)[0].replace(/\/+$/, '');
-    const page = path.split('/').pop();
-    return (page || 'index.html').toLowerCase();
+    return (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 }
 
 function getAuthSession() {
@@ -1736,6 +1734,24 @@ let appBooted = false;
 function bootApp() {
     if (appBooted) return;
     appBooted = true;
+
+    // Defensive fix: on the public login page a stray overlay
+    // (drawer overlay / live-chat / similar) may be present in
+    // some deployments and can block pointer events. If we're
+    // on `login.html` hide any overlay-like elements so the
+    // inputs remain interactive. This is a minimal runtime
+    // safeguard that does not change authentication logic.
+    try {
+        const page = getCurrentPageName();
+        if (page === 'login.html') {
+            document.querySelectorAll('.overlay, #drawerOverlay, .live-chat-window, #liveChatWindow').forEach((el) => {
+                try {
+                    el.style.display = 'none';
+                    el.style.pointerEvents = 'none';
+                } catch (e) {}
+            });
+        }
+    } catch (e) {}
 
     if (!applyAuthRouting()) {
         return;
